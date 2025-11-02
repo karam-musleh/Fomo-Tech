@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -58,4 +58,58 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
+<p align="center">
+  <a href="https://github.com/karam-musleh/Fomo-Tech" target="_blank">
+    <img src="https://raw.githubusercontent.com/karam-musleh/Fomo-Tech/main/public/uploads/project-banner.png" width="400" alt="Fomo-Tech Logo">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/karam-musleh/Fomo-Tech/actions"><img src="https://img.shields.io/github/actions/workflow/status/karam-musleh/Fomo-Tech/tests.yml?branch=main" alt="Build Status"></a>
+  <a href="https://packagist.org/packages/laravel/laravel"><img src="https://img.shields.io/badge/Laravel-12.x-orange?logo=laravel" alt="Laravel Version"></a>
+  <a href="https://github.com/karam-musleh/Fomo-Tech/blob/main/LICENSE"><img src="https://img.shields.io/github/license/karam-musleh/Fomo-Tech" alt="License"></a>
+</p>
+
+---
+
+## 🚀 Fomo-Tech Platform
+
+**Fomo-Tech** هي منصة تعليمية واستشارية تفاعلية، تجمع بين **الطلاب** و**المنتورز (المرشدين)** لتبادل الخبرات التعليمية والمهنية.  
+تم تطويرها باستخدام **Laravel 12** وواجهة برمجة تطبيقات (API) قوية لتسهيل التكامل مع الواجهات الأمامية أو تطبيقات الموبايل.
+
+---
+
+## 🧠 المزايا الأساسية
+
+- 🔐 نظام تسجيل دخول وتحقق OTP عبر البريد الإلكتروني.
+- 👨‍🏫 إمكانية تسجيل **منتور** وإضافة مهارات (Skills) ومسارات (Tracks).
+- 🎓 حسابات للطلاب تحتوي على أهداف، تخصص، ونبذة تعريفية.
+- 📚 نظام إدارة مقالات (Articles) وموارد تعليمية (Resources).
+- 🧩 لوحة تحكم **Admin Dashboard** لإدارة:
+  - المنتورز والطلاب
+  - المقالات
+  - المسارات التعليمية
+  - الأقسام (Sections)
+
+---
+
+## 🛠️ التقنيات المستخدمة
+
+| التقنية | الوصف |
+|----------|-------|
+| **Laravel 12** | الإطار الأساسي لبناء الـ API |
+| **MySQL** | قاعدة البيانات |
+| **JWT Auth** | نظام المصادقة للمستخدمين |
+| **Spatie Permissions** | لإدارة الصلاحيات والأدوار |
+| **Insomnia / Postman** | لاختبار الـ API |
+| **Storage (Public Disk)** | لتخزين الصور والملفات المرفوعة |
+
+---
+
+## ⚙️ إعداد المشروع محليًا
+
+### 1️⃣ نسخ المشروع
+```bash
+git clone https://github.com/karam-musleh/Fomo-Tech.git
+cd Fomo-Tech
