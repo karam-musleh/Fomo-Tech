@@ -27,7 +27,6 @@ class BlogController extends Controller
             ->paginate($per_page);
         return $this->successResponse(BlogResource::collection($blogs));
     }
-    // show details blog
     public function show($slug)
     {
         $blog = Blog::with(['mentor.user', 'section'])->where('slug', $slug)
@@ -39,7 +38,6 @@ class BlogController extends Controller
 
         return $this->successResponse(new BlogResource($blog), 'Blog retrieved successfully.');
     }
-    // create mentor blogs
 
     public function store(StoreBlogRequest $request)
     {
@@ -52,15 +50,9 @@ class BlogController extends Controller
         if (!$section) {
             return $this->errorResponse('Blog section not found', 404);
         }
-        //slug unique if empty generate from title
         $data = $request->validated();
 
-        // if (empty($data['slug'])) {
-        //     $slug = Str::slug($data['title']);
-        //     $count = Blog::where('slug', 'like', $slug . '%')->count();
-        //     $data['slug'] = $count ? "{$slug}-" . ($count + 1) : $slug;
-        // }
-        //image upload
+
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('blogs', 'public');
             $request->merge(['image' => $imagePath]);
@@ -146,9 +138,7 @@ class BlogController extends Controller
 
     public function publish($slug)
     {
-        // dd($slug);
         $blog = Blog::where('slug', $slug)->first();
-        // dd($blog);
         if (!$blog) {
             return $this->errorResponse('Blog not found', 404);
         }
