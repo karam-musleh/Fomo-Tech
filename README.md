@@ -59,12 +59,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
+<!-- <p align="center">
+  <a href="https://github.com/karam-musleh/Fomo-Tech" target="_blank">
+    <img src="https://drive.google.com/file/d/1VICenD5hmFC2bMFNp0gJuFJmitfl5BW3/view"width="400" alt="Fomo-Tech Logo">
+  </a>
+</p> -->
 <p align="center">
   <a href="https://github.com/karam-musleh/Fomo-Tech" target="_blank">
-    <img src="https://raw.githubusercontent.com/karam-musleh/Fomo-Tech/main/public/uploads/Group-9.png" width="350" alt="Fomo-Tech Banner">
-  </a>
-  <a href="https://github.com/karam-musleh/Fomo-Tech" target="_blank">
-    <img src="https://drive.google.com/uc?export=view&id=1VICenD5hmFC2bMFNp0gJuFJmitfl5BW3" width="350" alt="Fomo-Tech Logo">
+    <img src="https://drive.google.com/uc?export=view&id=1VICenD5hmFC2bMFNp0gJuFJmitfl5BW3" width="400" alt="Fomo-Tech Logo">
   </a>
 </p>
 
