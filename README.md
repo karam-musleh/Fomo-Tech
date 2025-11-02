@@ -61,7 +61,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 <p align="center">
   <a href="https://github.com/karam-musleh/Fomo-Tech" target="_blank">
-    <img src="https://raw.githubusercontent.com/karam-musleh/Fomo-Tech/main/public/uploads/project-banner.png" width="400" alt="Fomo-Tech Logo">
+    <img src="https://raw.githubusercontent.com/karam-musleh/Fomo-Tech/main/public/uploads/Group-9.png" width="400" alt="Fomo-Tech Logo">
   </a>
 </p>
 
@@ -82,27 +82,27 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## 🧠 المزايا الأساسية
 
-- 🔐 نظام تسجيل دخول وتحقق OTP عبر البريد الإلكتروني.
-- 👨‍🏫 إمكانية تسجيل **منتور** وإضافة مهارات (Skills) ومسارات (Tracks).
-- 🎓 حسابات للطلاب تحتوي على أهداف، تخصص، ونبذة تعريفية.
-- 📚 نظام إدارة مقالات (Articles) وموارد تعليمية (Resources).
-- 🧩 لوحة تحكم **Admin Dashboard** لإدارة:
-  - المنتورز والطلاب
-  - المقالات
-  - المسارات التعليمية
-  - الأقسام (Sections)
+-   🔐 نظام نسجيل دخول والمصادقة عن طريق التوكن .
+-   👨‍🏫 إمكانية تسجيل **منتور** وإضافة مهارات (Skills) ومسارات (Tracks).
+-   🎓 حسابات للطلاب تحتوي على أهداف، تخصص، ونبذة تعريفية.
+-   📚 نظام إدارة مقالات (Articles) وموارد تعليمية (Resources).
+-   🧩 لوحة تحكم **Admin Dashboard** لإدارة:
+    -   المنتورز والطلاب
+    -   المقالات
+    -   المسارات التعليمية
+    -   الأقسام (Sections)
 
 ---
 
 ## 🛠️ التقنيات المستخدمة
 
-| التقنية | الوصف |
-|----------|-------|
-| **Laravel 12** | الإطار الأساسي لبناء الـ API |
-| **MySQL** | قاعدة البيانات |
-| **JWT Auth** | نظام المصادقة للمستخدمين |
-| **Spatie Permissions** | لإدارة الصلاحيات والأدوار |
-| **Insomnia / Postman** | لاختبار الـ API |
+| التقنية                   | الوصف                          |
+| ------------------------- | ------------------------------ |
+| **Laravel 12**            | الإطار الأساسي لبناء الـ API   |
+| **MySQL**                 | قاعدة البيانات                 |
+| **JWT Auth**              | نظام المصادقة للمستخدمين       |
+| **Spatie Permissions**    | لإدارة الصلاحيات والأدوار      |
+| **Insomnia / Postman**    | لاختبار الـ API                |
 | **Storage (Public Disk)** | لتخزين الصور والملفات المرفوعة |
 
 ---
@@ -110,6 +110,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## ⚙️ إعداد المشروع محليًا
 
 ### 1️⃣ نسخ المشروع
+
 ```bash
 git clone https://github.com/karam-musleh/Fomo-Tech.git
 cd Fomo-Tech
+```
