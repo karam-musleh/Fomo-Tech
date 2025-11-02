@@ -19,12 +19,36 @@ class RegisterRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
-    {
-        return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-        ];
+public function rules(): array
+{
+    $rules = [
+        'first_name'    => 'required|string|max:255',
+        'last_name'     => 'required|string|max:255',
+        'email'         => 'required|email|unique:users,email',
+        'role'          => 'required|string|in:mentor,student',
+        'password'      => 'required|string|min:8|confirmed',
+        'date_of_birth' => 'nullable|date',
+        'pronoun'       => 'required|string|max:50',
+        'major'         => 'required|string|max:50',
+        'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:5120',
+        'goals'         => 'required|string|max:255',
+        'bio'           => 'required|string|max:1000',
+        'linkedin_url'  => 'nullable|url|max:255',
+    ];
+
+    //  هنا الشرط: لو الدور Mentor أضيف القواعد الخاصة فيه
+    if ($this->input('role') === 'mentor') {
+        $rules = array_merge($rules, [
+            'welcome_statement'   => 'required|string|max:500',
+            'years_of_experience' => 'required|integer|min:0',
+            'tracks'              => 'sometimes|array',
+            'tracks.*'            => 'integer|exists:tracks,id',
+            'skills'              => 'sometimes|array',
+            'skills.*'            => 'string|max:255',
+        ]);
     }
+
+    return $rules;
+}
+
 }

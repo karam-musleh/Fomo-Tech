@@ -24,12 +24,30 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail(),
+            'role' => fake()->randomElement(['admin', 'student', 'mentor']),
+            'date_of_birth' => fake()->date(),
+            'pronoun' => fake()->randomElement(['he/him', 'she/her', 'they/them']),
+            'major' => fake()->word(),
+            'profile_photo' => fake()->imageUrl(200, 200, 'people'),
+            'goals' => fake()->sentence(),
+            'bio' => fake()->paragraph(),
+            'linkedin_url' => 'https://linkedin.com/in/' . fake()->userName(),
             'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'password' => bcrypt('password'), // تقدر تغيرها
+            'otp_code' => null,
+            'otp_expires_at' => null,
             'remember_token' => Str::random(10),
         ];
+        //     return [
+        //         'name' => fake()->name(),
+        //         'email' => fake()->unique()->safeEmail(),
+        //         'email_verified_at' => now(),
+        //         'password' => static::$password ??= Hash::make('password'),
+        //         'remember_token' => Str::random(10),
+        //     ];
     }
 
     /**
@@ -37,7 +55,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }

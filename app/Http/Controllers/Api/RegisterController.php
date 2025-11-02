@@ -19,72 +19,36 @@ class RegisterController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        $otpCode = rand(1000, 9999);
+        $user = User::create($request->validated());
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'otp_code' => $otpCode,
-            'otp_expires_at' => now()->addMinutes(10),
-        ]);
-
-        $user->notify(new OtpUser($otpCode));
-        return $this->successResponse(null, 'User registered successfully, please check your email for OTP verification.', 201);
-    }
-
-    public function verifyOtp(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email|exists:users,email',
-            'otp_code' => 'required|digits:4',
-        ]);
-
-        $user = User::where('email', $request->email)->first();
-
-        if ($user->otp_code != $request->otp_code) {
-            return $this->errorResponse('Invalid OTP code', 400);
+        if ($request->hasFile('profile_photo')) {
+            $path = $request->file('profile_photo')->store('uploads', 'public');
+            $user->profile_photo = $path;
         }
+        $user->save();
 
-        if (now()->greaterThan($user->otp_expires_at)) {
-            return $this->errorResponse('OTP code has expired', 400);
+        if ($user->role === 'mentor') {
+            $mentorData = [
+                'welcome_statement' => $request->welcome_statement,
+                'years_of_experience' => (int)$request->years_of_experience,
+            ];
+
+            if ($request->filled('skills')) {
+                $mentorData['skills'] = $request->skills;
+            }
+
+            $mentor = $user->mentor()->create($mentorData);
+
+            if ($request->filled('tracks')) {
+                $mentor->tracks()->sync($request->tracks);
+            }
         }
-
-        $user->update([
-            'otp_code' => null,
-            'otp_expires_at' => null,
-        ]);
 
         $token = Auth::guard('api')->login($user);
 
         return $this->successResponse([
-
-            'user' => new UserResource($user),
+            'user' => new UserResource($user->load('mentor.tracks')),
             'token' => $token,
-        ], 'OTP verified and logged in successfully.');
-    }
-
-    public function resendOtp(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email|exists:users,email',
-        ]);
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user) {
-            return $this->errorResponse('User not found.', 404);
-        }
-
-        $newOtp = rand(1000, 9999);
-
-        $user->update([
-            'otp_code' => $newOtp,
-            'otp_expires_at' => now()->addMinutes(10),
-        ]);
-
-        $user->notify(new OtpUser($newOtp));
-
-        return $this->successResponse(null, 'OTP code resent. Please check your email.', 200);
+        ], 'User registered successfully.');
     }
 }

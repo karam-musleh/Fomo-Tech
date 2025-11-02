@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateRequest extends FormRequest
 {
@@ -15,16 +16,36 @@ class UpdateRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string,
      */
     public function rules(): array
     {
-        return [
-            'name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|unique:users,email,'.$this->user()->id,
-            'password' => 'nullable|string|min:8|confirmed',
+        $rules = [
+            'first_name'    => 'sometimes|string|max:255',
+            'last_name'     => 'sometimes|string|max:255',
+            'role'          => 'sometimes|string|in:mentor,student',
+            'password'      => 'sometimes|string|min:8|confirmed',
+            'date_of_birth' => 'sometimes|date|nullable',
+            'pronoun'       => 'sometimes|string|max:50|nullable',
+            'major'         => 'sometimes|string|max:50|nullable',
+            'profile_photo' => 'sometimes|image|mimes:jpg,jpeg,png|max:5120',
+            'goals'         => 'sometimes|string|max:255|nullable',
+            'bio'           => 'sometimes|string|max:1000|nullable',
+            'linkedin_url'  => 'sometimes|url|max:255|nullable',
         ];
+        
+        $user = $this->user('api')??$this->user();
+        if ( $user && $user->role === 'mentor') {
+            $rules = array_merge($rules, [
+                'welcome_statement'   => 'sometimes|string|max:500|nullable',
+                'years_of_experience' => 'sometimes|integer|min:0|nullable',
+                'tracks'              => 'sometimes|array',
+                'tracks.*'            => 'integer|exists:tracks,id',
+                'skills'              => 'sometimes|array',
+                'skills.*'            => 'integer|exists:skills,id',
+            ]);
+        }
+        return $rules;
     }
 }

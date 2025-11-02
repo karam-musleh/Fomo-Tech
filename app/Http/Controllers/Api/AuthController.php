@@ -18,7 +18,6 @@ class AuthController extends Controller
 {
     use ApiResponserTrait;
 
-    // تسجيل الدخول
     public function login(LoginRequest $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -28,9 +27,7 @@ class AuthController extends Controller
         if (!Hash::check($request->password, $user->password)) {
             return $this->errorResponse('Invalid password', 400);
         }
-        if (!empty($user->otp_code)) {
-            return $this->errorResponse('OTP verification required', 403);
-        }
+
         $token = Auth::guard('api')->login($user);
         return $this->successResponse(
             [
@@ -43,7 +40,6 @@ class AuthController extends Controller
         );
     }
 
-    // تسجيل الخروج
 
     public function logout()
     {
@@ -55,8 +51,6 @@ class AuthController extends Controller
         }
     }
 
-
-    // تحديث التوكين
     public function refresh()
     {
         try {
